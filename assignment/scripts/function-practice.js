@@ -87,3 +87,18 @@ function sumAll( ) {
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+//
+//
+
+
+function greet() {
+    console.log("HELLO HELLO!!");
+}
+
+let count = 0;
+let display = document.querySelector('#count-display');
+
+function increaseCount(by = 1) {
+    count += by;
+    display.innerHTML = count;
+}
