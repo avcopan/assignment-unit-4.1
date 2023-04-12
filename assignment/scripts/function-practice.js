@@ -27,6 +27,7 @@ function addNumbers(firstNumber, secondNumber) {
   return firstNumber + secondNumber;
 }
 console.log('addNumbers(5, 113)', addNumbers(5, 113));
+console.log('addNumbers(-5, 8)', addNumbers(-5, 8));
 
 
 // 4. Function to multiply three numbers & return the result
@@ -96,6 +97,7 @@ function sumAll(array) {
   return sum;
 }
 console.log('sumAll([1, 2, 3, 4])', sumAll([1, 2, 3, 4]));
+console.log('sumAll([])', sumAll([]));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
@@ -112,7 +114,8 @@ function getPositiveElements(array) {
 console.log(
   'getPositiveElements([1, -2, 3, -4, -4, 5])',
   getPositiveElements([1, -2, 3, -4, -4, 5])
-)
+);
+console.log('getPositiveElements([])', getPositiveElements([]));
 
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
