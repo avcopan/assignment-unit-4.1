@@ -23,24 +23,25 @@ console.log('Calling helloName()', helloName());
 
 
 // 3. Function to add two numbers together & return the result
-function addNumbers( firstNumber ) {
-  // return firstNumber + secondNumber;
+function addNumbers(firstNumber, secondNumber) {
+  return firstNumber + secondNumber;
 }
+console.log('addNumbers(5, 113)', addNumbers(5, 113));
 
 
 // 4. Function to multiply three numbers & return the result
-function multiplyThree( ){
-
+function multiplyThree(num1, num2, num3) {
+  return num1 * num2 * num3;
 }
-
+console.log('multiplyThree(2, 3, 4)', multiplyThree(2, 3, 4));
 
 // 5. Function that will return true if a number is positive, 
 //    or greater than zero, and false otherwise
-function isPositive( number ) {
-  if ( number > 0 ){
-    return;
+function isPositive(number) {
+  if (number > 0) {
+    return true;
   }
-    return;
+  return false;
 }
 // Call the function to test each outcome (true & false) 
 // Write a separate console.log statement for each outcome
@@ -51,16 +52,29 @@ console.log( 'isPositive - should say false', isPositive(-3) );
 
 // 6. Function to return the _last_ item in an array. If the 
 //    array is empty, return `undefined`.
-function getLast( array ) {
-
+function getLast(array) {
+  let lastItem = undefined;
+  if (array.length) {
+    lastItem = array[array.length - 1];
+  }
+  return lastItem;
 }
+console.log('getLast([1, 2, 3, 4])', getLast([1, 2, 3, 4]));
+console.log('getLast([])', getLast([]));
 
 // 7. Function to find a value in an array. Return true if the 
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find 
-function find( value, array ){
-  
+function find(value, array) {
+  for (let element of array) {
+    if (element === value) {
+      return true;
+    }
+  }
+  return false;
 }
+console.log("find('z', 'abcdefg')", find('z', 'abcdefg'))
+console.log("find('f', 'abcdefg')", find('f', 'abcdefg'))
 
 // ----------------------
 // Stretch Goals
@@ -68,24 +82,75 @@ function find( value, array ){
 // 8. Function to check if a letter is the first letter in a 
 //    string. Return true if it is, and false otherwise
 function isFirstLetter(letter, string) {
-
+  return string[0] === letter;
 }
 console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
 console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
-  let sum = 0
-  // TODO: loop to add items
+function sumAll(array) {
+  let sum = 0;
+  for (let element of array) {
+    sum += element;
+  }
   return sum;
 }
+console.log('sumAll([1, 2, 3, 4])', sumAll([1, 2, 3, 4]));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
-
+function getPositiveElements(array) {
+  let positiveArray = [];
+  for (let element of array) {
+    if (element > 0) {
+      positiveArray.push(element);
+    }
+  }
+  return positiveArray;
+}
+console.log(
+  'getPositiveElements([1, -2, 3, -4, -4, 5])',
+  getPositiveElements([1, -2, 3, -4, -4, 5])
+)
 
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+/* RegEx Exercise: An empty string
+ * Use a RegEx to test whether a string is empty.
+ * Link: https://edabit.com/challenge/bAqxpvYmDuuvz4LQz */
+
+// Here's my function for checking if a string is empty.
+function emptyString(string, allowSpace=false) {
+  // This regExp is used if allowSpace is false. It only matches completely
+  // empty strings. It only matches when the string end is immediately followed
+  // by the string start.
+  let regExp = /^$/;
+  if (allowSpace) {
+    // If spaces are allowed in the empty string, check that there is nothing
+    // other than spaces between the string start and end.
+    regExp = /^[ \n\t]*$/;
+  }
+  return regExp.test(string);
+}
+
+// Here are some console.logs to test it.
+console.log("emptyString('abc')", emptyString('abc'));
+console.log("emptyString('')", emptyString(''));
+console.log("emptyString('   ')", emptyString('   '));
+console.log(
+  "emptyString('   ', allowSpace=true)",
+  emptyString('   ', allowSpace=true)
+);
+console.log(
+  "emptyString(' \n\t  ', allowSpace=true)",
+  emptyString(' \n\t  ', allowSpace=true)
+);
+// double check that allow spaces still works correctly for a fully empty string
+console.log(
+  "emptyString('', allowSpace=true)",
+  emptyString('', allowSpace=true)
+);
